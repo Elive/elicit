@@ -3,12 +3,13 @@
 
 #include <Ecore.h>
 #include <Ecore_X.h>
+#include <Eina.h>
 
 #include "elicit.h"
 #include "config.h"
 
-void
-parse_options(int argc, char **argv, Elicit *el)
+static void
+parse_options(int argc EINA_UNUSED, char **argv EINA_UNUSED, Elicit *el EINA_UNUSED)
 {
 }
 

@@ -73,7 +73,7 @@ cb_ee_mouse_out(Ecore_Evas *ee)
 }
 
 static void
-cb_edje_signal(void *data, Evas_Object *obj, const char *emission, const char *source)
+cb_edje_signal(void *data, Evas_Object *obj EINA_UNUSED, const char *emission, const char *source)
 {
   Elicit *el = data;
   char *signal;
@@ -264,7 +264,7 @@ cb_edje_signal(void *data, Evas_Object *obj, const char *emission, const char *s
 }
 
 static void
-cb_edje_move(void *data, Evas_Object *obj, const char *emission, const char *source)
+cb_edje_move(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
 {
   Elicit *el = data;
 
@@ -277,7 +277,7 @@ cb_edje_move(void *data, Evas_Object *obj, const char *emission, const char *sou
 }
 
 static void
-cb_palette_color_selected(void *data, Evas_Object *obj, void *event_info)
+cb_palette_color_selected(void *data, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
   Elicit *el = data;
   Color *c = event_info;
@@ -286,9 +286,9 @@ cb_palette_color_selected(void *data, Evas_Object *obj, void *event_info)
 }
 
 static void
-cb_related_color_select(void *data, Evas *e, Evas_Object *obj, void *event_info)
+cb_related_color_select(void *data, Evas *e EINA_UNUSED, Evas_Object *obj, void *event_info)
 {
-  Evas_Event_Mouse_Up *ev;
+  Evas_Event_Mouse_Up *ev EINA_UNUSED;
   Elicit *el;
   int r, g, b;
 
@@ -300,7 +300,7 @@ cb_related_color_select(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-cb_palette_color_deleted(void *data, Evas_Object *obj, void *event_info)
+cb_palette_color_deleted(void *data EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
   Palette *p;
 
@@ -345,7 +345,7 @@ elicit_pick(Elicit *el)
 }
 
 void
-elicit_scroll(Elicit *el, const char *source, int dir)
+elicit_scroll(Elicit *el EINA_UNUSED, const char *source EINA_UNUSED, int dir EINA_UNUSED)
 {
 }
 

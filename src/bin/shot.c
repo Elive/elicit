@@ -126,7 +126,7 @@ void
 elicit_shot_grid_visible_set(Evas_Object *o, int visible)
 {
   Elicit_Shot *sh;
-  Evas_Object *gui;
+  Evas_Object *gui EINA_UNUSED;
   sh = evas_object_smart_data_get(o);
 
   if (sh->grid_visible == visible)
@@ -330,7 +330,7 @@ shot_select_update(Elicit_Shot *sh, int px, int py)
 }
 
 static void
-shot_select_end(Elicit_Shot *sh, int px, int py)
+shot_select_end(Elicit_Shot *sh, int px EINA_UNUSED, int py EINA_UNUSED)
 {
   sh->measuring = 0;
   if (sh->measure.length == 0)
@@ -348,7 +348,7 @@ shot_selection_clear(Elicit_Shot *sh)
 }
 
 static void
-cb_evas_mouse_down(void *data, Evas *e, Evas_Object *obj, void *event_info)
+cb_evas_mouse_down(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
   Evas_Event_Mouse_Down *ev;
   Elicit_Shot *sh;
@@ -361,7 +361,7 @@ cb_evas_mouse_down(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-cb_evas_mouse_move(void *data, Evas *e, Evas_Object *obj, void *event_info)
+cb_evas_mouse_move(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
   Evas_Event_Mouse_Move *ev;
   Elicit_Shot *sh;
@@ -374,7 +374,7 @@ cb_evas_mouse_move(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-cb_evas_mouse_up(void *data, Evas *e, Evas_Object *obj, void *event_info)
+cb_evas_mouse_up(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
   Evas_Event_Mouse_Up *ev;
   Elicit_Shot *sh;
@@ -387,7 +387,7 @@ cb_evas_mouse_up(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-cb_evas_mouse_wheel(void *data, Evas *e, Evas_Object *obj, void *event_info)
+cb_evas_mouse_wheel(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
   Evas_Event_Mouse_Wheel *ev;
   Elicit_Shot *sh;
@@ -470,6 +470,9 @@ _smart_init(void)
     _smart_color_set,
     _smart_clip_set,
     _smart_clip_unset,
+    NULL,
+    NULL,
+    NULL,
     NULL,
     NULL,
     NULL,

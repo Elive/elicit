@@ -149,7 +149,7 @@ pan_child_size_get(Evas_Object *obj, Evas_Coord *w, Evas_Coord *h)
 
 /* local subsystem functions */
 static void
-_smart_child_del_hook(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_smart_child_del_hook(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    E_Smart_Data *sd;
    
@@ -159,7 +159,7 @@ _smart_child_del_hook(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-_smart_child_resize_hook(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_smart_child_resize_hook(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    E_Smart_Data *sd;
    Evas_Coord w, h;
@@ -293,6 +293,9 @@ _smart_init(void)
 	       _smart_color_set,
 	       _smart_clip_set,
 	       _smart_clip_unset,
+	       NULL,
+	       NULL,
+	       NULL,
 	       NULL,
 	       NULL,
 	       NULL,

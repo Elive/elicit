@@ -350,7 +350,7 @@ pv_layout_timer(void *data)
 
 
 static void
-cb_swatch_in(void *data, Evas *evas, Evas_Object *obj, void *event_info)
+cb_swatch_in(void *data EINA_UNUSED, Evas *evas EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
   Color *c;
   c = evas_object_data_get(obj, "Color");
@@ -358,7 +358,7 @@ cb_swatch_in(void *data, Evas *evas, Evas_Object *obj, void *event_info)
 }
 
 static void
-cb_swatch_out(void *data, Evas *evas, Evas_Object *obj, void *event_info)
+cb_swatch_out(void *data EINA_UNUSED, Evas *evas EINA_UNUSED, Evas_Object *obj, void *event_info EINA_UNUSED)
 {
   Color *c;
   c = evas_object_data_get(obj, "Color");
@@ -366,7 +366,7 @@ cb_swatch_out(void *data, Evas *evas, Evas_Object *obj, void *event_info)
 }
 
 static void
-cb_swatch_up(void *data, Evas *evas, Evas_Object *obj, void *event_info)
+cb_swatch_up(void *data, Evas *evas EINA_UNUSED, Evas_Object *obj, void *event_info)
 {
   Evas_Event_Mouse_Up *ev;
   Palette_View *pv;

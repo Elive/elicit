@@ -19,7 +19,7 @@ static DATA8 rtab[256], gtab[256], btab[256];
 static signed char x_does_shm = -1;
 
 static void
-TmpXError(Display * d, XErrorEvent * ev)
+TmpXError(Display * d EINA_UNUSED, XErrorEvent * ev EINA_UNUSED)
 {
    _x_err = 1;
    return;
@@ -110,7 +110,7 @@ __imlib_ShmDetach(Display * d, XShmSegmentInfo * si)
 
 
 void
-__imlib_GrabXImageToRGBA(DATA32 * data, int ox, int oy, int ow, int oh,
+__imlib_GrabXImageToRGBA(DATA32 * data, int ox, int oy, int ow, int oh EINA_UNUSED,
                          Display * d, XImage * xim, XImage * mxim, Visual * v,
                          int depth, int x, int y, int w, int h, char grab)
 {
@@ -609,7 +609,7 @@ __imlib_GrabXImageToRGBA(DATA32 * data, int ox, int oy, int ow, int oh,
 static char
 __imlib_GrabDrawableToRGBA(DATA32 * data, int ox, int oy, int ow, int oh,
                            Display * d, Drawable p, Pixmap m, Visual * v,
-                           Colormap cm, int depth, int x, int y,
+                           Colormap cm, int depth EINA_UNUSED, int x, int y,
                            int w, int h, char *pdomask, char grab)
 {
    XErrorHandler       prev_erh = NULL;
@@ -617,11 +617,11 @@ __imlib_GrabDrawableToRGBA(DATA32 * data, int ox, int oy, int ow, int oh,
    char                is_pixmap = 0, created_mask = 0, is_shm = 0, is_mshm = 0;
    char                domask;
    int                 i;
-   int                 src_x, src_y, src_w, src_h, origw, origh;
+   int                 src_x, src_y, src_w, src_h, origw EINA_UNUSED, origh EINA_UNUSED;
    int                 width, height, clipx, clipy;
    XShmSegmentInfo     shminfo, mshminfo;
    XImage             *xim, *mxim;
-   static signed char  x_does_shm = -1;
+   x_does_shm  = -1;
    XColor              cols[256];
 
    domask = (pdomask) ? *pdomask : 0;
