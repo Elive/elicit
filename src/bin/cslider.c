@@ -1,4 +1,7 @@
 #include "cslider.h"
+#include <Evas.h>
+#include <Ecore.h>
+#include <Eina.h>
 
 static Evas_Smart *_smart;
 
@@ -57,8 +60,8 @@ elicit_cslider_theme_set(Evas_Object *o, const char *file, const char *group)
   {
     if (!cs->spectrum)
     {
-      cs->spectrum = evas_object_gradient_add(evas_object_evas_get(o));
-      evas_object_gradient_angle_set(cs->spectrum, 270);
+      //cs->spectrum = evas_object_gradient_add(evas_object_evas_get(o));
+      //evas_object_gradient_angle_set(cs->spectrum, 270);
     }
 
     edje_object_part_swallow(cs->gui, "spectrum", cs->spectrum);
@@ -93,7 +96,7 @@ elicit_cslider_color_set(Evas_Object *o, Color *color, Color_Type type)
 }
 
 static void
-cb_drag(void *data, Evas_Object *obj, const char *signal, const char *source)
+cb_drag(void *data, Evas_Object *obj, const char *signal EINA_UNUSED, const char *source)
 {
   Elicit_Cslider *cs = data;
   double val;
@@ -118,7 +121,7 @@ cb_drag(void *data, Evas_Object *obj, const char *signal, const char *source)
 }
 
 static void
-cb_scroll(void *data, Evas_Object *obj, const char *signal, const char *source)
+cb_scroll(void *data, Evas_Object *obj EINA_UNUSED, const char *signal, const char *source EINA_UNUSED)
 {
   Elicit_Cslider *cs = data;
 
@@ -152,7 +155,7 @@ cb_scroll(void *data, Evas_Object *obj, const char *signal, const char *source)
 }
 
 static void
-cb_color_changed(Color *color, void *data)
+cb_color_changed(Color *color EINA_UNUSED, void *data)
 {
   Elicit_Cslider *cs = data;
 
@@ -164,10 +167,10 @@ cb_color_changed(Color *color, void *data)
 
   color_rgba_get(cs->color, &r, &g, &b, &a);
   color_hsva_get(cs->color, &h, &s, &v, NULL);
-
+/*
   if (cs->spectrum)
     evas_object_gradient_clear(cs->spectrum);
-
+*/
   switch(cs->type)
   {
     case COLOR_TYPE_RED:
@@ -175,8 +178,8 @@ cb_color_changed(Color *color, void *data)
       snprintf(buf, sizeof(buf), "%d", r);
       if (cs->spectrum)
       {
-        evas_object_gradient_color_stop_add(cs->spectrum, 0, g, b, 255, 1);
-        evas_object_gradient_color_stop_add(cs->spectrum, 255, g, b, 255, 1);
+  //      evas_object_gradient_color_stop_add(cs->spectrum, 0, g, b, 255, 1);
+    //    evas_object_gradient_color_stop_add(cs->spectrum, 255, g, b, 255, 1);
       }
       break;
     case COLOR_TYPE_GREEN:
@@ -184,8 +187,8 @@ cb_color_changed(Color *color, void *data)
       snprintf(buf, sizeof(buf), "%d", g);
       if (cs->spectrum)
       {
-        evas_object_gradient_color_stop_add(cs->spectrum, r, 0, b, 255, 1);
-        evas_object_gradient_color_stop_add(cs->spectrum, r, 255, b, 255, 1);
+     //   evas_object_gradient_color_stop_add(cs->spectrum, r, 0, b, 255, 1);
+     //   evas_object_gradient_color_stop_add(cs->spectrum, r, 255, b, 255, 1);
       }
       break;
     case COLOR_TYPE_BLUE:
@@ -193,8 +196,8 @@ cb_color_changed(Color *color, void *data)
       snprintf(buf, sizeof(buf), "%d", b);
       if (cs->spectrum)
       {
-        evas_object_gradient_color_stop_add(cs->spectrum, r, g, 0, 255, 1);
-        evas_object_gradient_color_stop_add(cs->spectrum, r, g, 255, 255, 1);
+      //  evas_object_gradient_color_stop_add(cs->spectrum, r, g, 0, 255, 1);
+   //  evas_object_gradient_color_stop_add(cs->spectrum, r, g, 255, 255, 1);
       }
       break;
     case COLOR_TYPE_HUE:
@@ -204,13 +207,13 @@ cb_color_changed(Color *color, void *data)
       {
         int max, min;
         evas_color_hsv_to_rgb(0, s, v, &max, &min, NULL);
-        evas_object_gradient_color_stop_add(cs->spectrum, max, min, min, 255, 0);
+        /*evas_object_gradient_color_stop_add(cs->spectrum, max, min, min, 255, 0);
         evas_object_gradient_color_stop_add(cs->spectrum, max, max, min, 255, 1);
         evas_object_gradient_color_stop_add(cs->spectrum, min, max, min, 255, 1);
         evas_object_gradient_color_stop_add(cs->spectrum, min, max, max, 255, 1);
         evas_object_gradient_color_stop_add(cs->spectrum, min, min, max, 255, 1);
         evas_object_gradient_color_stop_add(cs->spectrum, max, min, max, 255, 1);
-        evas_object_gradient_color_stop_add(cs->spectrum, max, min, min, 255, 1);
+        evas_object_gradient_color_stop_add(cs->spectrum, max, min, min, 255, 1);*/
       }
       break;
     case COLOR_TYPE_SATURATION:
@@ -218,11 +221,11 @@ cb_color_changed(Color *color, void *data)
       snprintf(buf, sizeof(buf), "%.2f", val);
       if (cs->spectrum)
       {
-        int r, g, b;
+        //int r, g, b;
         evas_color_hsv_to_rgb(h, 0, v, &r, &g, &b);
-        evas_object_gradient_color_stop_add(cs->spectrum, r, g, b, 255, 0);
+        //evas_object_gradient_color_stop_add(cs->spectrum, r, g, b, 255, 0);
         evas_color_hsv_to_rgb(h, 1, v, &r, &g, &b);
-        evas_object_gradient_color_stop_add(cs->spectrum, r, g, b, 255, 1);
+        //evas_object_gradient_color_stop_add(cs->spectrum, r, g, b, 255, 1);
       }
       break;
     case COLOR_TYPE_VALUE:
@@ -230,11 +233,11 @@ cb_color_changed(Color *color, void *data)
       snprintf(buf, sizeof(buf), "%.2f", val);
       if (cs->spectrum)
       {
-        int r, g, b;
+        //int r, g, b;
         evas_color_hsv_to_rgb(h, s, 0, &r, &g, &b);
-        evas_object_gradient_color_stop_add(cs->spectrum, r, g, b, 255, 0);
+        //evas_object_gradient_color_stop_add(cs->spectrum, r, g, b, 255, 0);
         evas_color_hsv_to_rgb(h, s, 1, &r, &g, &b);
-        evas_object_gradient_color_stop_add(cs->spectrum, r, g, b, 255, 1);
+        //evas_object_gradient_color_stop_add(cs->spectrum, r, g, b, 255, 1);
       }
       break;
     default:
@@ -263,6 +266,9 @@ _smart_init(void)
     NULL,
     _smart_clip_set,
     _smart_clip_unset,
+    NULL,
+    NULL,
+    NULL,
     NULL,
     NULL,
     NULL,
@@ -323,7 +329,7 @@ _smart_resize(Evas_Object *o, Evas_Coord w, Evas_Coord h)
   evas_object_resize(cs->gui, w, h);
 
   evas_object_geometry_get(cs->spectrum, NULL, NULL, &sw, &sh);
-  evas_object_gradient_fill_set(cs->spectrum, 0, 0, sw, sh);
+  //evas_object_gradient_fill_set(cs->spectrum, 0, 0, sw, sh);
 }
 
 static void
