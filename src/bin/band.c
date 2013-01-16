@@ -47,13 +47,15 @@ elicit_band_free(Elicit_Band *band)
 void
 elicit_band_show(Elicit_Band *band)
 {
-  ecore_evas_show(band->ee);
+   if((band) && (band->ee))
+     ecore_evas_show(band->ee);
 }
 
 void
 elicit_band_hide(Elicit_Band *band)
 {
-  ecore_evas_hide(band->ee);
+   if((band) && (band->ee))
+     ecore_evas_hide(band->ee);
 }
 
 void
