@@ -128,10 +128,10 @@ scrollframe_child_set(Evas_Object *obj, Evas_Object *child)
 
 void
 scrollframe_extern_pan_set(Evas_Object *obj, Evas_Object *pan,
-			     void (*pan_set) (Evas_Object *obj, Evas_Coord x, Evas_Coord y),
-			     void (*pan_get) (Evas_Object *obj, Evas_Coord *x, Evas_Coord *y),
-			     void (*pan_max_get) (Evas_Object *obj, Evas_Coord *x, Evas_Coord *y),
-			     void (*pan_child_size_get) (Evas_Object *obj, Evas_Coord *x, Evas_Coord *y))
+			     void (*_set) (Evas_Object *obj, Evas_Coord x, Evas_Coord y),
+			     void (*_get) (Evas_Object *obj, Evas_Coord *x, Evas_Coord *y),
+			     void (*_max_get) (Evas_Object *obj, Evas_Coord *x, Evas_Coord *y),
+			     void (*_child_size_get) (Evas_Object *obj, Evas_Coord *x, Evas_Coord *y))
 {
    API_ENTRY return;
    
@@ -159,10 +159,10 @@ scrollframe_extern_pan_set(Evas_Object *obj, Evas_Object *pan,
      }
 
    sd->pan_obj = pan;
-   sd->pan_func.set = pan_set;
-   sd->pan_func.get = pan_get;
-   sd->pan_func.max_get = pan_max_get;
-   sd->pan_func.child_size_get = pan_child_size_get;
+   sd->pan_func.set = _set;
+   sd->pan_func.get = _get;
+   sd->pan_func.max_get = _max_get;
+   sd->pan_func.child_size_get = _child_size_get;
    sd->extern_pan = 1;
    evas_object_smart_callback_add(sd->pan_obj, "changed", _smart_pan_changed_hook, sd);
    evas_object_smart_callback_add(sd->pan_obj, "pan_changed", _smart_pan_pan_changed_hook, sd);
@@ -349,7 +349,7 @@ scrollframe_scroll_pos_set(Evas_Object *obj, float vx, float vy)
 
 /* local subsystem functions */
 static void
-_smart_edje_drag_v(void *data, Evas_Object *obj, const char *emission, const char *source)
+_smart_edje_drag_v(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
 {
    Smart_Data *sd;
    
@@ -358,7 +358,7 @@ _smart_edje_drag_v(void *data, Evas_Object *obj, const char *emission, const cha
 }
 
 static void
-_smart_edje_drag_h(void *data, Evas_Object *obj, const char *emission, const char *source)
+_smart_edje_drag_h(void *data, Evas_Object *obj EINA_UNUSED, const char *emission EINA_UNUSED, const char *source EINA_UNUSED)
 {
    Smart_Data *sd;
    
@@ -367,7 +367,7 @@ _smart_edje_drag_h(void *data, Evas_Object *obj, const char *emission, const cha
 }
 
 static void
-_smart_child_del_hook(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_smart_child_del_hook(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    Smart_Data *sd;
    
@@ -378,7 +378,7 @@ _smart_child_del_hook(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-_smart_pan_changed_hook(void *data, Evas_Object *obj, void *event_info)
+_smart_pan_changed_hook(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    Evas_Coord w, h;
    Smart_Data *sd;
@@ -394,7 +394,7 @@ _smart_pan_changed_hook(void *data, Evas_Object *obj, void *event_info)
 }
 
 static void
-_smart_pan_pan_changed_hook(void *data, Evas_Object *obj, void *event_info)
+_smart_pan_pan_changed_hook(void *data, Evas_Object *obj EINA_UNUSED, void *event_info EINA_UNUSED)
 {
    Evas_Coord x, y;
    Smart_Data *sd;
@@ -405,7 +405,7 @@ _smart_pan_pan_changed_hook(void *data, Evas_Object *obj, void *event_info)
 }
 
 static void
-_smart_event_wheel(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_smart_event_wheel(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
    Evas_Event_Mouse_Wheel *ev;
    Smart_Data *sd;
@@ -419,7 +419,7 @@ _smart_event_wheel(void *data, Evas *e, Evas_Object *obj, void *event_info)
 }
 
 static void
-_smart_event_key_down(void *data, Evas *e, Evas_Object *obj, void *event_info)
+_smart_event_key_down(void *data, Evas *e EINA_UNUSED, Evas_Object *obj EINA_UNUSED, void *event_info)
 {
    Evas_Event_Key_Down *ev;
    Smart_Data *sd;
@@ -490,7 +490,7 @@ static int
 _smart_scrollbar_bar_v_visibility_adjust(Smart_Data *sd)
 {
    int scroll_v_vis_change = 0;
-   Evas_Coord w, h, vw, vh;
+   Evas_Coord w EINA_UNUSED, h, vw, vh;
    
    w = sd->child.w;
    h = sd->child.h;
@@ -554,7 +554,7 @@ static int
 _smart_scrollbar_bar_h_visibility_adjust(Smart_Data *sd)
 {
    int scroll_h_vis_change = 0;
-   Evas_Coord w, h, vw, vh;
+   Evas_Coord w, h EINA_UNUSED, vw, vh;
    
    w = sd->child.w;
    h = sd->child.h;
@@ -832,6 +832,9 @@ _smart_init(void)
 	       _smart_color_set,
 	       _smart_clip_set,
 	       _smart_clip_unset,
+	       NULL,
+	       NULL,
+	       NULL,
 	       NULL,
 	       NULL,
 	       NULL,
