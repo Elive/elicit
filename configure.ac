@@ -16,6 +16,7 @@ AC_C_BIGENDIAN
 PKG_CHECK_MODULES(ELICIT, [
   evas
   ecore
+  ecore-x
   ecore-evas
   ecore-file
   eina
