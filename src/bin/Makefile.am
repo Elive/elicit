@@ -20,5 +20,5 @@ pan.c pan.h \
 scrollframe.c scrollframe.h \
 types.h
 
-elicit_LDADD = @ELICIT_LIBS@ -lX11
+elicit_LDADD = @ELICIT_LIBS@ -lX11 -lXext
 
