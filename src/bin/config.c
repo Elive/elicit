@@ -15,8 +15,8 @@ elicit_config_load(Elicit *el)
   el->conf.w = 200;
   el->conf.h = 200;
   el->conf.zoom_level = 4;
-  el->conf.grid_visible = 1;
-  el->conf.show_band = 1;
+  el->conf.grid_visible = 0;
+  el->conf.show_band = 0;
 
   if (!el->path.conffile) return 0;
 
