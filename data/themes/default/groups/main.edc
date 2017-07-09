@@ -411,6 +411,16 @@ group {
       action: SIGNAL_EMIT "elicit,pick,stop" "";
     }
 
+    // always open the panel at start by default
+    program {
+      name: "elicit.panel.open.default";
+      signal: "load";
+      source: "";
+      action: STATE_SET "open" 0.0;
+      target: "panel.border.left";
+      target: "panel.border.close";
+      transition: DECELERATE 1.5;
+    }
     program {
       name: "elicit.panel.open";
       signal: "mouse,clicked,1";
