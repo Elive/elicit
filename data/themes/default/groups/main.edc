@@ -1,6 +1,5 @@
 color_classes {
-  color_class {
-    name: "elicit.border";
+  color_class { name: "elicit.border";
     color: 192 223 255 255;
   }
 }
@@ -22,14 +21,12 @@ images {
   image: "panel-shadow.png" COMP;
 }
 
-group {
-  name: "elicit.main";
+group { name: "elicit.main";
 
   min: 285 160;
 
   parts {
-    part {
-      name: "panel.sizer.confine";
+    part { name: "panel.sizer.confine";
       type: RECT;
       description {
         state: "default" 0.0;
@@ -37,8 +34,7 @@ group {
       }
     }
 
-    part {
-      name: "base";
+    part { name: "base";
       mouse_events: 0;
       description {
         state: "default" 0.0;
@@ -50,8 +46,7 @@ group {
       }
     }
 
-    part {
-      name: "base.gradient.top";
+    part { name: "base.gradient.top";
       mouse_events: 0;
       description {
         state: "default" 0.0;
@@ -69,8 +64,7 @@ group {
       }
     }
 
-    part {
-      name: "base.border.top";
+    part { name: "base.border.top";
       mouse_events: 0;
       description {
         state: "default" 0.0;
@@ -83,8 +77,7 @@ group {
       }
     }
 
-    part {
-      name: "base.gradient.bottom";
+    part { name: "base.gradient.bottom";
       mouse_events: 0;
       description {
         state: "default" 0.0;
@@ -102,8 +95,7 @@ group {
       }
     }
 
-    part {
-      name: "base.border.bottom";
+    part { name: "base.border.bottom";
       mouse_events: 0;
       description {
         state: "default" 0.0;
@@ -116,8 +108,7 @@ group {
       }
     }
 
-    part {
-      name: "elicit.shot";
+    part { name: "elicit.shot";
       type: SWALLOW;
       description {
         state: "default" 0.0;
@@ -125,8 +116,7 @@ group {
         rel2 { to_x: "base"; to_y: "elicit.swatch"; relative: 1 0; offset: -9 -10; }
       }
     }
-    part {
-      name: "elicit.shot.selection.bg";
+    part { name: "elicit.shot.selection.bg";
       type: RECT;
       mouse_events: 0;
       description {
@@ -141,8 +131,7 @@ group {
         color: 255 255 255 200;
       }
     }
-    part {
-      name: "elicit.shot.selection.text";
+    part { name: "elicit.shot.selection.text";
       type: TEXT;
       mouse_events: 0;
       description {
@@ -166,8 +155,7 @@ group {
         color: 0 0 0 255;
       }
     }
-    part {
-      name: "elicit.shot.event";
+    part { name: "elicit.shot.event";
       type: RECT;
       description {
         state: "default" 0.0;
@@ -177,8 +165,7 @@ group {
       }
     }
 
-    part {
-      name: "elicit.shot.frame";
+    part { name: "elicit.shot.frame";
       mouse_events: 0;
       description {
         state: "default" 0.0;
@@ -191,8 +178,7 @@ group {
       }
     }
 
-    part {
-      name: "elicit.swatch";
+    part { name: "elicit.swatch";
       type: SWALLOW;
       description {
         state: "default" 0.0;
@@ -201,8 +187,7 @@ group {
         color: 120 230 200 120;
       }
     }
-    part {
-      name: "elicit.swatch.event";
+    part { name: "elicit.swatch.event";
       type: RECT;
       description {
         state: "default" 0.0;
@@ -212,8 +197,7 @@ group {
       }
     }
 
-    part {
-      name: "elicit.swatch.frame";
+    part { name: "elicit.swatch.frame";
       mouse_events: 0;
       description {
         state: "default" 0.0;
@@ -226,8 +210,7 @@ group {
       }
     }
 
-    part {
-      name: "base.buttons";
+    part { name: "base.buttons";
       type: RECT;
       mouse_events: 0;
       description {
@@ -238,8 +221,7 @@ group {
       }
     }
 
-    part {
-      name: "button.close";
+    part { name: "button.close";
       type: GROUP;
       source: "elicit.button.close";
       description {
@@ -249,8 +231,7 @@ group {
       }
     }
 
-    part {
-      name: "panel.border.gradient";
+    part { name: "panel.border.gradient";
       description {
         state: "default" 0.0;
         min: 5 15;
@@ -266,8 +247,7 @@ group {
       }
     }
 
-    part {
-      name: "panel.border.left";
+    part { name: "panel.border.left";
       type: IMAGE;
       description {
         state: "default" 0.0;
@@ -287,8 +267,8 @@ group {
       }
     }
 
-    part {
-      name: "panel.border.close";
+    part { name: "panel.border.close";
+      type: RECT;
 
       description {
         state: "default" 0.0;
@@ -306,8 +286,7 @@ group {
       }
     }
 
-    part {
-      name: "panel.clip";
+    part { name: "panel.clip";
       type: RECT;
       description {
         state: "default" 0.0;
@@ -316,8 +295,7 @@ group {
       }
     }
 
-    part {
-      name: "panel";
+    part { name: "panel";
       type: IMAGE;
       description {
         state: "default" 0.0;
@@ -327,8 +305,7 @@ group {
       }
     }
 
-    part {
-      name: "panel.shadow";
+    part { name: "panel.shadow";
       type: IMAGE;
       mouse_events: 0;
       clip_to: "panel.clip";
@@ -340,8 +317,8 @@ group {
         rel2 { to: "panel"; relative: 1 1; offset: -1 0; }
       }
     }
-    part {
-      name: "panel.sizer";
+    part { name: "panel.sizer";
+      type: RECT;
       dragable {
         confine: "panel.sizer.confine";
         x: 1 1 1;
@@ -355,8 +332,7 @@ group {
       }
     }
 
-    part {
-      name: "panel.sizer.handle";
+    part { name: "panel.sizer.handle";
       dragable {
         events: "panel.sizer";
       }
@@ -384,36 +360,31 @@ group {
   }
 
   programs {
-    program {
-      name: "elicit.magnify.start";
+    program { name: "elicit.magnify.start";
       signal: "mouse,down,1";
       source: "elicit.shot.event";
       action: SIGNAL_EMIT "elicit,magnify,start" "";
     }
-    program {
-      name: "elicit.magnify.stop";
+    program { name: "elicit.magnify.stop";
       signal: "mouse,up,1";
       source: "elicit.shot.event";
       action: SIGNAL_EMIT "elicit,magnify,stop" "";
     }
 
 
-    program {
-      name: "elicit.pick.start";
+    program { name: "elicit.pick.start";
       signal: "mouse,down,1";
       source: "elicit.swatch.event";
       action: SIGNAL_EMIT "elicit,pick,start" "";
     }
-    program {
-      name: "elicit.pick.stop";
+    program { name: "elicit.pick.stop";
       signal: "mouse,up,1";
       source: "elicit.swatch.event";
       action: SIGNAL_EMIT "elicit,pick,stop" "";
     }
 
     // always open the panel at start by default
-    program {
-      name: "elicit.panel.open.default";
+    program { name: "elicit.panel.open.default";
       signal: "load";
       source: "";
       action: STATE_SET "open" 0.0;
@@ -421,8 +392,7 @@ group {
       target: "panel.border.close";
       transition: DECELERATE 1.5;
     }
-    program {
-      name: "elicit.panel.open";
+    program { name: "elicit.panel.open";
       signal: "mouse,clicked,1";
       source: "panel.border.left";
       action: STATE_SET "open" 0.0;
@@ -431,8 +401,7 @@ group {
       transition: DECELERATE 0.5;
     }
 
-    program {
-      name: "elicit.panel.close";
+    program { name: "elicit.panel.close";
       signal: "mouse,clicked,1";
       source: "panel.border.close";
       action: STATE_SET "default" 0.0;
@@ -441,8 +410,7 @@ group {
       transition: DECELERATE 0.5;
     }
 
-    program {
-      name: "elicit.activate";
+    program { name: "elicit.activate";
       signal: "elicit,activate";
       source: "*";
       action: STATE_SET "active" 0.0;
@@ -452,8 +420,7 @@ group {
       transition: DECELERATE 0.5;
     }
 
-    program {
-      name: "elicit.deactivate";
+    program { name: "elicit.deactivate";
       signal: "elicit,deactivate";
       source: "*";
       action: STATE_SET "default" 0.0;
@@ -463,8 +430,7 @@ group {
       transition: DECELERATE 0.5;
     }
 
-    program {
-      name: "elicit.shot.selection.show";
+    program { name: "elicit.shot.selection.show";
       signal: "elicit,shot,selection,show";
       source: "*";
       action: STATE_SET "visible" 0.0;
@@ -472,8 +438,7 @@ group {
       target: "elicit.shot.selection.bg";
     }
 
-    program {
-      name: "elicit.shot.selection.hide";
+    program { name: "elicit.shot.selection.hide";
       signal: "elicit,shot,selection,hide";
       source: "*";
       action: STATE_SET "default" 0.0;

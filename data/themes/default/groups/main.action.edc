@@ -6,8 +6,7 @@ images {
   image: "icon-panel.png" COMP;
 }
 
-    part {
-      name: "action.clip";
+    part { name: "action.clip";
       type: RECT;
       description {
         state: "default" 0.0;
@@ -21,8 +20,7 @@ images {
       }
     }
 
-    part {
-      name: "action.icon";
+    part { name: "action.icon";
       type: RECT;
       clip_to: "action.clip";
       description {
@@ -36,8 +34,7 @@ images {
       }
     }
 
-    part {
-      name: "action.text";
+    part { name: "action.text";
       clip_to: "action.clip";
       type: TEXT;
       description {
@@ -58,8 +55,7 @@ images {
 
 #undef ACTION_ICON
 #define ACTION_ICON(NAME, IMAGE, W, H) \
-    part { \
-      name: "action.icon."NAME; \
+    part { name: "action.icon."NAME; \
       clip_to: "action.clip"; \
       mouse_events: 0; \
       description { \
@@ -78,16 +74,14 @@ images {
         color: 255 255 255 255; \
       } \
     } \
-    program { \
-      name: "action.icon."NAME".show"; \
+    program { name: "action.icon."NAME".show"; \
       action: STATE_SET "visible" 0.0; \
       target: "action.icon."NAME; \
       after: "action.show"; \
     }
 
 #define ACTION_PROG(EVENT_PART, NAME, HELP_TEXT) \
-    program { \
-      name: "action."EVENT_PART".set_text"; \
+    program { name: "action."EVENT_PART".set_text"; \
       signal: "mouse,in"; \
       source: EVENT_PART; \
       script { \
@@ -95,22 +89,19 @@ images {
       } \
       after: "action.icon."NAME".show"; \
     } \
-    program { \
-      name: "action.icon."EVENT_PART".hide"; \
+    program { name: "action.icon."EVENT_PART".hide"; \
       signal: "mouse,out"; \
       source: EVENT_PART; \
       after: "action.hide"; \
     }
 
-    program {
-      name: "action.show";
+    program { name: "action.show";
       action: STATE_SET "visible" 0.0;
       target: "action.clip";
       transition: DECELERATE 0.5;
     }
 
-    program {
-      name: "action.hide";
+    program { name: "action.hide";
       action: STATE_SET "default" 0.0;
       target: "action.clip";
       target: "action.icon.magnify";

@@ -3,14 +3,12 @@ images {
   image: "x2.png" COMP;
 }
 
-group {
-  name: "elicit.button.close";
+group { name: "elicit.button.close";
   min: 17 17;
   max: 17 17;
 
   parts {
-    part {
-      name: "button";
+    part { name: "button";
       description {
         state: "default" 0.0;
         color: 255 255 255 127;
@@ -28,8 +26,7 @@ group {
   }
 
   programs {
-    program {
-      name: "button.in";
+    program { name: "button.in";
       signal: "mouse,in";
       source: "button";
       action: STATE_SET "highlit" 0.0;
@@ -37,8 +34,7 @@ group {
       target: "button";
     }
 
-    program {
-      name: "button.out";
+    program { name: "button.out";
       signal: "mouse,out";
       source: "button";
       action: STATE_SET "default" 0.0;
@@ -46,24 +42,21 @@ group {
       target: "button";
     }
 
-    program {
-      name: "button.down";
+    program { name: "button.down";
       signal: "mouse,down,1";
       source: "button";
       action: STATE_SET "pressed" 0.0;
       target: "button";
     }
 
-    program {
-      name: "button.up";
+    program { name: "button.up";
       signal: "mouse,up,1";
       source: "button";
       action: STATE_SET "highlit" 0.0;
       target: "button";
     }
 
-    program {
-      name: "button.up2";
+    program { name: "button.up2";
       signal: "mouse,up,1";
       source: "button";
       action: SIGNAL_EMIT "elicit,quit" "";
