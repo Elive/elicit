@@ -9,16 +9,23 @@ group { name: "elicit.button.close";
 
   parts {
     part { name: "button";
+      type: IMAGE;
+
       description {
+        min: 17 17;
+        max: 17 17;
+
         state: "default" 0.0;
         color: 255 255 255 127;
         image.normal: "x.png";
       }
       description {
+        inherit: "default" 0.0;
         state: "highlit" 0.0;
         image.normal: "x.png";
       }
       description {
+        inherit: "default" 0.0;
         state: "pressed" 0.0;
         image.normal: "x2.png";
       }

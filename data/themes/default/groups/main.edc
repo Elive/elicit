@@ -227,6 +227,7 @@ group { name: "elicit.main";
       description {
         state: "default" 0.0;
         align: 1 1;
+        rel1 { to: "base.buttons"; relative: 1 1; offset: -1 -1; }
         rel2 { to: "base.buttons"; relative: 1 1; offset: -1 -1; }
       }
     }
