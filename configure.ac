@@ -31,4 +31,6 @@ data/Makefile
 data/images/Makefile
 data/themes/Makefile
 data/themes/default/Makefile
+data/themes/summer/Makefile
+data/themes/spring/Makefile
 ])
